@@ -1,0 +1,48 @@
+#include <iostream>
+#include <vector>
+#include <string>
+
+class Story {
+public:
+    std::string title;
+    std::string content;
+
+    Story(const std::string& t, const std::string& c)
+        : title(t), content(c) {}
+};
+
+class StoryPlatform {
+private:
+    std::vector<Story> stories;
+
+public:
+    void addStory(const Story& story) {
+        stories.push_back(story);
+    }
+
+    void displayStories() {
+        std::cout << "Available Stories:\n";
+        for (const auto& story : stories) {
+            std::cout << "Title: " << story.title << "\n";
+            std::cout << "Content: " << story.content << "\n";
+            std::cout << "-------------------------\n";
+        }
+    }
+};
+
+int main() {
+    StoryPlatform magicalLandStories;
+
+    Story story1("The Enchanted Odyssey", 
+        "Once upon a time in the mystical realm of Eldoria, a young adventurer named Elara discovered a hidden portal..."
+    );
+
+    // Add more stories as needed
+
+    magicalLandStories.addStory(story1);
+
+    // Display available stories
+    magicalLandStories.displayStories();
+
+    return 0;
+}
